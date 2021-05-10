@@ -1,6 +1,6 @@
 # Simply Wall St Technical Exercise
 
-In this exercise we are looking for something that resembles `https://simplywall.st/stocks/`. 
+In this exercise we are looking for something that resembles `https://simplywall.st/stocks/`.
 
 ## Requirements:
 
@@ -82,3 +82,47 @@ If we wanted to fetch 12 of companies in Canada sorted by Market Cap the payload
   )
 }
 ```
+
+### My thoughts
+
+From my initial exploration on Simply Wall St's website, I found that
+ - styled components is used for styles
+ - server side rendering is used
+ - cypress is used for e2e testing
+ - PHP is used for the API
+
+I develop locally instead of on codesandbox. I run Chrome browser without CORS.
+
+I will choose to implement pages for pagination as a SEO consideration.
+If this was a native app task, I will opt with infinite scrolling for better UX.
+
+* Component grouping (How you organise your components into logical groups)
+  - I group components to make them small and manageable to avoid conflicts and increase re-usability.
+  - I place careful consideration on which component should own the state.
+  - I extract business logic and place them into custom hooks to decouple components and business logic.
+
+* Styling architecture (How you implement your styles)
+  - From my initial exploration on Simply Wall St's website, I found that styled components is used for styles.
+  - I used theme and mixins for styling.
+  - I also used normalize.css for reset some legacy styles and for browser compatibility purposes.
+
+* Rendering performance (Check for performance bottlenecks)
+  - I try to reduce the number of dependencies to minimise the final bundle size, since this is a small task.
+  - I streamline the dom and improve some styles for performance.
+  - I add key prop to not affect performance.
+  - I will use Lighthouse for performance debugging.
+
+  General performance (other than rendering performance):
+  - I set the page to preconnect to the API to reduce the time in DNS lookup.
+  - I recently looked into differential loading for production.
+
+* Avoid overengineering (Simple and straightforward)
+  - Since there is no formal design for this task, so I go with solution that avoids overengineering, simple and straightforward.
+
+* Data structures (How you store internal state)
+  - I place careful consideration on which component should own the state.
+
+* Testing practices (https://codesandbox.io/docs/tests)
+  - I use jest for unit testing and snapshot testing.
+  - From my initial exploration on Simply Wall St's website, I found that cypress is used for e2e testing.
+  - I will try to use cypress.
