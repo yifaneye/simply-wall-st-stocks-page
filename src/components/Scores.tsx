@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Score from './Score';
 import { SCORE_AREAS, ScoreArea } from '../models/ScoreAreas';
-import { Scores } from '../services/useStocks';
+import { Scores } from '../models/Scores';
 
 // colors grabbed using Digital Color Meter
 // they are to be revised

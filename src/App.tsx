@@ -1,7 +1,14 @@
 import React, { FC } from 'react';
 import { ThemeProvider } from 'styled-components';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Redirect,
+  Route,
+} from 'react-router-dom';
 
 import Page from './components/Page';
+import { DEFAULT_MARKET } from './models/Markets';
 
 const THEME: object = {
   primary: '#fff',
@@ -43,7 +50,16 @@ const THEME: object = {
 const App: FC = (): JSX.Element => {
   return (
     <ThemeProvider theme={THEME}>
-      <Page />
+      <Router>
+        <Switch>
+          <Route path="/:market">
+            <Page />
+          </Route>
+          <Route path="/" exact>
+            <Redirect to={`/${DEFAULT_MARKET}`} />
+          </Route>
+        </Switch>
+      </Router>
     </ThemeProvider>
   );
 };

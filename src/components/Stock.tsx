@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 
 import Scores from './Scores';
-import { Stock } from '../services/useStocks';
+import { Stock } from '../models/Stock';
 
 const UniqueSymbol = styled.span`
   ${({ theme }) => theme.font('1.2rem', '500', '1.5')}

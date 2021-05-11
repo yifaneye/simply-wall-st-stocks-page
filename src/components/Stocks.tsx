@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 
 import StockCard from './Stock';
-import { Stock } from '../services/useStocks';
+import { Stock } from '../models/Stock';
 
 const Grid = styled.div`
   display: flex;

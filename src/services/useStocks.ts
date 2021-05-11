@@ -1,24 +1,9 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { useCallback, useEffect, useState } from 'react';
 import { STOCKS_URL } from '../environments/endpoints';
-
-export interface Scores {
-  value: number;
-  income: number;
-  health: number;
-  past: number;
-  future: number;
-  total: number;
-}
-
-export interface Stock {
-  id: number;
-  name: string;
-  unique_symbol: string;
-  score: {
-    data: Scores;
-  };
-}
+import { DEFAULT_MARKET } from '../models/Markets';
+import { DEFAULT_SORTING_STRATEGY } from '../models/SortingStrategies';
+import { Stock } from '../models/Stock';
 
 interface Response {
   data: Stock[];
@@ -29,21 +14,31 @@ interface AxiosStocksResponse extends AxiosResponse {
   data: Response;
 }
 
-const useStocks = (): [Stock[], boolean, boolean, object] => {
+const useStocks = (
+  marketValue: string = DEFAULT_MARKET,
+  sortingValue: string = DEFAULT_SORTING_STRATEGY.value
+): [Stock[], boolean, boolean, object] => {
   const [stocks, setStocks] = useState<Stock[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [hasError, setHasError] = useState<boolean>(false);
   const [meta, setMeta] = useState<object>({});
 
   const fetchStocks = useCallback(async (): Promise<AxiosStocksResponse> => {
-    const rules = JSON.stringify([
-      ['order_by', 'market_cap', 'desc'],
+    const sortingRule = ['order_by', 'market_cap', sortingValue];
+
+    const defaultRules = [
       ['primary_flag', '=', true],
       ['grid_visible_flag', '=', true],
       ['market_cap', 'is_not_null'],
       ['is_fund', '=', false],
-      ['country_name', 'in', ['CA']],
-    ]);
+    ];
+
+    const marketRule =
+      marketValue === 'global'
+        ? []
+        : [['country_name', 'in', [[marketValue.toUpperCase()]]]];
+
+    const rules = JSON.stringify([sortingRule, ...defaultRules, ...marketRule]);
 
     const data = {
       id: '0',
@@ -59,9 +54,10 @@ const useStocks = (): [Stock[], boolean, boolean, object] => {
         'Content-Type': 'application/json',
       },
     });
-  }, []);
+  }, [marketValue, sortingValue]);
 
   useEffect(() => {
+    setIsLoading(true);
     fetchStocks()
       .then((response: AxiosStocksResponse) => {
         const { data, meta }: Response = response.data;
@@ -78,7 +74,15 @@ const useStocks = (): [Stock[], boolean, boolean, object] => {
     // cannot use .finally() here for browser compatibility
 
     return () => {};
-  }, []);
+  }, [
+    fetchStocks,
+    setStocks,
+    setIsLoading,
+    setHasError,
+    setMeta,
+    marketValue,
+    sortingValue,
+  ]);
 
   return [stocks, isLoading, hasError, meta];
 };

@@ -83,7 +83,20 @@ If we wanted to fetch 12 of companies in Canada sorted by Market Cap the payload
 }
 ```
 
-### My thoughts
+## Get Started
+
+### Development
+```shell
+yarn install
+yarn start
+```
+
+## Testing
+```shell
+yarn test
+```
+
+## My thoughts
 
 From my initial exploration on Simply Wall St's website, I found that
  - styled components is used for styles
@@ -108,6 +121,7 @@ If this was a native app task, I will opt with infinite scrolling for better UX.
 
 * Rendering performance (Check for performance bottlenecks)
   - I try to reduce the number of dependencies to minimise the final bundle size, since this is a small task.
+  - I write code that is succinct and elegantly get the thing done.
   - I streamline the dom and improve some styles for performance.
   - I add key prop to not affect performance.
   - I will use Lighthouse for performance debugging.
