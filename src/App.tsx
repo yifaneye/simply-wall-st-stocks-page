@@ -7,7 +7,7 @@ import {
   Route,
 } from 'react-router-dom';
 
-import Page from './components/Page';
+import Page from './components/pages/Page';
 import { DEFAULT_MARKET } from './models/Markets';
 
 const THEME: object = {

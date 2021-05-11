@@ -2,14 +2,16 @@ import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 
-import Stocks from './Stocks';
-import useStocks from '../services/useStocks';
-import MarketDropdown from './MarketDropdown';
-import SortingSelect from './SortingDropdown';
+import Stocks from '../Stocks';
+import useStocks from '../../utils/useStocks';
+import useQuery from '../../utils/useQuery';
+import Pagination from '../Pagination';
+import MarketDropdown from '../MarketDropdown';
+import SortingSelect from '../SortingDropdown';
 import {
   DEFAULT_SORTING_STRATEGY,
   SortingStrategy,
-} from '../models/SortingStrategies';
+} from '../../models/SortingStrategies';
 
 const Container = styled.div`
   margin: 0 auto;
@@ -20,8 +22,13 @@ const Container = styled.div`
 
 const Page: FC = (): JSX.Element => {
   const { market: marketValue } = useParams();
+  const query = useQuery();
   const [sorting, setSorting] = useState(DEFAULT_SORTING_STRATEGY);
-  const [stocks, isLoading, hasError] = useStocks(marketValue, sorting.value);
+  const [stocks, isLoading, hasError, prevPageLink, nextPageLink] = useStocks(
+    marketValue,
+    sorting.value,
+    query
+  );
 
   const handleChangeSorting = (value: SortingStrategy): void => {
     setSorting(value);
@@ -33,6 +40,7 @@ const Page: FC = (): JSX.Element => {
       <SortingSelect selectedValue={sorting} onChange={handleChangeSorting} />
       {isLoading ? 'Loading ...' : <Stocks stocks={stocks} />}
       {hasError && 'Please try again'}
+      <Pagination prevPageLink={prevPageLink} nextPageLink={nextPageLink} />
     </Container>
   );
 };

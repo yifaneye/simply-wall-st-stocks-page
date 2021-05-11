@@ -106,23 +106,26 @@ From my initial exploration on Simply Wall St's website, I found that
 
 I develop locally instead of on codesandbox. I run Chrome browser without CORS.
 
-I will choose to implement pages for pagination as a SEO consideration.
+I choose to implement pages for pagination as a SEO consideration.
 If this was a native app task, I will opt with infinite scrolling for better UX.
 
 * Component grouping (How you organise your components into logical groups)
-  - I group components to make them small and manageable to avoid conflicts and increase re-usability.
+  - I separate icons components and pages components from other components by placing them into their respective directories.
+  - I group components to make them small and manageable to avoid version control conflicts and increase re-usability.
   - I place careful consideration on which component should own the state.
   - I extract business logic and place them into custom hooks to decouple components and business logic.
 
 * Styling architecture (How you implement your styles)
   - From my initial exploration on Simply Wall St's website, I found that styled components is used for styles.
-  - I used theme and mixins for styling.
+  - I used styled components for styling.
+  - I use theme to apply a consistent tone to the website.
+  - I use mixin to abstract reusable logic and to simplify the code.
   - I also used normalize.css for reset some legacy styles and for browser compatibility purposes.
 
 * Rendering performance (Check for performance bottlenecks)
   - I try to reduce the number of dependencies to minimise the final bundle size, since this is a small task.
   - I write code that is succinct and elegantly get the thing done.
-  - I streamline the dom and improve some styles for performance.
+  - I streamline the DOM and improve some styles for performance.
   - I add key prop to not affect performance.
   - I will use Lighthouse for performance debugging.
 
