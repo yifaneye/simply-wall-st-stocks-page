@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 
 import Score from './Score';
-import { SCORE_AREAS, ScoreArea } from '../models/ScoreAreas';
-import { Scores } from '../models/Scores';
+import { SCORE_AREAS, ScoreArea } from '../../models/ScoreAreas';
+import { Scores } from '../../models/Scores';
 
 // colors grabbed using Digital Color Meter
 // they are to be revised
@@ -31,7 +31,7 @@ interface Props {
   scores: Scores;
 }
 
-const Scores: FC<Props> = ({ scores }): JSX.Element => {
+const ScoresContainer: FC<Props> = ({ scores }): JSX.Element => {
   // use div instead of fragment here to show the grouping and assign color
   return (
     <Container total={scores.total}>
@@ -46,4 +46,4 @@ const Scores: FC<Props> = ({ scores }): JSX.Element => {
   );
 };
 
-export default Scores;
+export default ScoresContainer;

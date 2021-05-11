@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import IconAnchor from './IconAnchor';
 
 const Container = styled.div`
-  margin: 0 24px;
+  margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;

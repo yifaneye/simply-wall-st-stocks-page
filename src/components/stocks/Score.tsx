@@ -13,8 +13,8 @@ interface Props {
   area: string;
 }
 
-const Scores: FC<Props> = ({ score, area }): JSX.Element => {
-  // use <code> to have scores in equal width for readability
+const Score: FC<Props> = ({ score, area }): JSX.Element => {
+  // use <code> to have each score displayed in equal width, for readability
   return (
     <Container>
       <code>{score}</code> {area}
@@ -22,4 +22,4 @@ const Scores: FC<Props> = ({ score, area }): JSX.Element => {
   );
 };
 
-export default Scores;
+export default Score;

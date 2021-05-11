@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 
 import Scores from './Scores';
-import { Stock } from '../models/Stock';
+import { Stock } from '../../models/Stock';
 
 const UniqueSymbol = styled.span`
   ${({ theme }) => theme.font('1.2rem', '500', '1.5')}
@@ -32,7 +32,7 @@ interface Props {
   stock: Stock;
 }
 
-const Stock: FC<Props> = ({ stock }): JSX.Element => {
+const StockContainer: FC<Props> = ({ stock }): JSX.Element => {
   return (
     <Container>
       <Scores scores={stock.score.data} />
@@ -42,4 +42,4 @@ const Stock: FC<Props> = ({ stock }): JSX.Element => {
   );
 };
 
-export default Stock;
+export default StockContainer;

@@ -2,12 +2,12 @@ import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 
-import Stocks from '../Stocks';
+import Stocks from '../stocks/Stocks';
 import useStocks from '../../utils/useStocks';
 import useQuery from '../../utils/useQuery';
-import Pagination from '../Pagination';
-import MarketDropdown from '../MarketDropdown';
-import SortingSelect from '../SortingDropdown';
+import Pagination from '../controls/Pagination';
+import MarketDropdown from '../controls/MarketDropdown';
+import SortingSelect from '../controls/SortingDropdown';
 import {
   DEFAULT_SORTING_STRATEGY,
   SortingStrategy,
@@ -34,6 +34,7 @@ const Page: FC = (): JSX.Element => {
     setSorting(value);
   };
 
+  // need to use shim or set a height to minimize layout shift
   return (
     <Container>
       <MarketDropdown selectedValue={marketValue} />

@@ -83,11 +83,20 @@ If we wanted to fetch 12 of companies in Canada sorted by Market Cap the payload
 }
 ```
 
+## Demo
+
+[http://stocks.yifanai.com.s3-website-ap-southeast-2.amazonaws.com](http://stocks.yifanai.com.s3-website-ap-southeast-2.amazonaws.com)
+
 ## Get Started
 
 ### Development
+install dependencies
 ```shell
 yarn install
+```
+
+run the development server
+```shell
 yarn start
 ```
 
@@ -119,33 +128,41 @@ If this was a native app task, I will opt with infinite scrolling for better UX.
   - I separate icons components and pages components from other components by placing them into their respective directories.
   - I group components to make them small and manageable to avoid version control conflicts and increase re-usability.
   - I place careful consideration on which component should own the state.
-  - I extract business logic and place them into custom hooks to decouple components and business logic.
+  - I extract business logic and place them into custom hooks to decouple components from business logic.
+  - I adhere to single responsibility of components.
 
 * Styling architecture (How you implement your styles)
   - From my initial exploration on Simply Wall St's website, I found that styled components is used for styles.
   - I used styled components for styling.
   - I use theme to apply a consistent tone to the website.
   - I use mixin to abstract reusable logic and to simplify the code.
-  - I also used normalize.css for reset some legacy styles and for browser compatibility purposes.
+  - I improve some styles for performance.
+  - I also used styles from normalize.css for reset some legacy styles and for browser compatibility purposes.
 
 * Rendering performance (Check for performance bottlenecks)
-  - I try to reduce the number of dependencies to minimise the final bundle size, since this is a small task.
+  - I streamline the DOM to speed up rendering.
+  - I add key prop to not affect performance. I use ID instead of index (from the map) wherever possible.
+  - I use Lighthouse for performance debugging.
   - I write code that is succinct and elegantly get the thing done.
-  - I streamline the DOM and improve some styles for performance.
-  - I add key prop to not affect performance.
-  - I will use Lighthouse for performance debugging.
+  - I try to reduce the number of dependencies to minimise the final bundle size, since this is a small task.
 
   General performance (other than rendering performance):
-  - I set the page to preconnect to the API to reduce the time in DNS lookup.
-  - I recently looked into differential loading for production.
+  - I set the page to preconnect to the domain of the API to reduce the time in DNS lookup.
+  - I think differential loading can be used to improve performance for production.
+  - I think server side rendering, CDN settings can be used to improve performance.
 
 * Avoid overengineering (Simple and straightforward)
   - Since there is no formal design for this task, so I go with solution that avoids overengineering, simple and straightforward.
+  - I write clean code to make a page that resembles `https://simplywall.st/stocks/`.
 
 * Data structures (How you store internal state)
   - I place careful consideration on which component should own the state.
+  - I use the most suitable data type for storing each internal state.
+  - I try my best not to directly mutate internal state.
 
 * Testing practices (https://codesandbox.io/docs/tests)
+  - I set up unit testing, snapshot testing and end-to-end testing.
+  - I wrote simple tests for each of unit testing, snapshot testing and end-to-end testing.
   - I use jest for unit testing and snapshot testing.
   - From my initial exploration on Simply Wall St's website, I found that cypress is used for end-to-end testing.
   - I use cypress for end-to-end testing.

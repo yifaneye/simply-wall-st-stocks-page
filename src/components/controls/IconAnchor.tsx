@@ -1,10 +1,15 @@
 import React, { FC, PropsWithChildren } from 'react';
 
 import Anchor from './Anchor';
-import LeftIcon from './icons/LeftIcon';
-import RightIcon from './icons/RightIcon';
+import LeftIcon from '../icons/LeftIcon';
+import RightIcon from '../icons/RightIcon';
 
 type AvailableIcons = 'left' | 'right';
+
+const iconNameToComponent: Record<AvailableIcons, any> = {
+  left: LeftIcon(null),
+  right: RightIcon(null),
+};
 
 interface Props extends PropsWithChildren<any> {
   href?: string;
@@ -12,12 +17,7 @@ interface Props extends PropsWithChildren<any> {
   disabled: boolean;
 }
 
-const iconNameToComponent: Record<AvailableIcons, any> = {
-  left: LeftIcon(null),
-  right: RightIcon(null),
-};
-
-// this component is for placing icon in a Anchor component
+// this component is for placing icon in an Anchor component
 const IconAnchor: FC<Props> = (props): JSX.Element => {
   const { icon, ...otherProps } = props;
 

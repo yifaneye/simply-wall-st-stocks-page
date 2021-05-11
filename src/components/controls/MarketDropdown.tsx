@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import Select, { components } from 'react-select';
 
-import { MARKETS } from '../models/Markets';
+import { MARKETS } from '../../models/Markets';
 
 const Anchor = styled.a`
   color: ${({ theme }) => theme.secondary};

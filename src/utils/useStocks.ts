@@ -30,7 +30,7 @@ const useStocks = (
   const [stocks, setStocks] = useState<Stock[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [hasError, setHasError] = useState<boolean>(false);
-  const [page, setPage] = useState<PageNumber>(
+  const [page] = useState<PageNumber>(
     Number(query.get(PARAMS.page)) || DEFAULT_PAGE_NUMBER
   );
   const [previousPageLink, setPreviousPageLink] = useState<PageLink>(null);
@@ -42,7 +42,7 @@ const useStocks = (
       setPreviousPageLink(page - 1 >= 1 ? `?p=${page - 1}` : null);
       setNextPageLink(page + 1 <= totalPages ? `?p=${page + 1}` : null);
     },
-    [setPage, setPreviousPageLink, setNextPageLink]
+    [page, setPreviousPageLink, setNextPageLink]
   );
 
   const fetchStocks = useCallback(async (): Promise<AxiosStocksResponse> => {
@@ -65,7 +65,7 @@ const useStocks = (
     const data = {
       id: '0',
       no_result_if_limit: false,
-      offset: PAGE_SIZE * page,
+      offset: PAGE_SIZE * (page - 1),
       size: PAGE_SIZE,
       state: 'read',
       rules: rules,
@@ -76,7 +76,7 @@ const useStocks = (
         'Content-Type': 'application/json',
       },
     });
-  }, [marketValue, sortingValue]);
+  }, [page, marketValue, sortingValue]);
 
   useEffect(() => {
     setIsLoading(true);

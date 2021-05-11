@@ -232,10 +232,10 @@ exports[`The stock page renders the same as snapshot 1`] = `
   </div>
   Loading ...
   <div
-    className="sc-fujyAs iydsox"
+    className="sc-fujyAs hLlncf"
   >
     <a
-      className="sc-iCoGMd jNqhHG"
+      className="sc-iCoGMd jcZhbU"
       disabled={true}
       href={null}
     >
@@ -254,7 +254,7 @@ exports[`The stock page renders the same as snapshot 1`] = `
       </svg>
     </a>
     <a
-      className="sc-iCoGMd jNqhHG"
+      className="sc-iCoGMd jcZhbU"
       disabled={true}
       href={null}
     >

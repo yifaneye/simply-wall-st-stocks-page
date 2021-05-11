@@ -12,6 +12,7 @@ const Container = styled.a`
   align-items: center;
   -webkit-box-pack: center;
   justify-content: center;
+
   :hover,
   :focus {
     background: rgba(255, 255, 255, 0.1);
@@ -22,6 +23,11 @@ const Container = styled.a`
     css`
       opacity: 0.3;
       cursor: unset;
+
+      :hover,
+      :focus {
+        background: unset;
+      }
     `};
 `;
 

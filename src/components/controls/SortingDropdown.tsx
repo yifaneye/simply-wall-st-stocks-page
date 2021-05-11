@@ -5,7 +5,7 @@ import Select from 'react-select';
 import {
   SORTING_STRATEGIES,
   SortingStrategy,
-} from '../models/SortingStrategies';
+} from '../../models/SortingStrategies';
 
 const Container = styled.div`
   color: ${({ theme }) => theme.secondary};
