@@ -92,8 +92,14 @@ yarn start
 ```
 
 ## Testing
+run unit testing and snapshot testing
 ```shell
 yarn test
+```
+
+run end-to-end testing
+```shell
+yarn e2e
 ```
 
 ## My thoughts
@@ -141,5 +147,5 @@ If this was a native app task, I will opt with infinite scrolling for better UX.
 
 * Testing practices (https://codesandbox.io/docs/tests)
   - I use jest for unit testing and snapshot testing.
-  - From my initial exploration on Simply Wall St's website, I found that cypress is used for e2e testing.
-  - I will try to use cypress.
+  - From my initial exploration on Simply Wall St's website, I found that cypress is used for end-to-end testing.
+  - I use cypress for end-to-end testing.

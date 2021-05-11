@@ -3,9 +3,7 @@ import renderer from 'react-test-renderer';
 
 import { App } from './App';
 
-const { describe, it } = global;
-
-describe('App', () => {
+describe('The stock page', () => {
   // unit test
   it('is truthy', () => {
     expect(App).toBeTruthy();

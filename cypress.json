@@ -1,0 +1,9 @@
+{
+  "baseUrl": "http://localhost:1234",
+  "video": false,
+  "component": {
+    "testFiles": "**/*.spec.{js,ts,jsx,tsx}",
+    "componentFolder": "src"
+  },
+  "projectId": "83kubi"
+}
