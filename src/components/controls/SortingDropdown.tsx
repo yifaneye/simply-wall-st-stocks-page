@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import Select from 'react-select';
+import Select, { components } from 'react-select';
 
 import {
   SORTING_STRATEGIES,
@@ -14,6 +14,14 @@ const Container = styled.div`
   margin-bottom: 16px;
 `;
 
+const Option: FC = (props: any): JSX.Element => {
+  return (
+    <div data-test-id={`sorting-option-${props.value}`}>
+      <components.Option {...props} children={props.children} />
+    </div>
+  );
+};
+
 interface Props {
   selectedValue: SortingStrategy;
   onChange: (value: SortingStrategy) => void;
@@ -24,10 +32,12 @@ const MarketDropdown: FC<Props> = ({
   onChange,
 }): JSX.Element => {
   return (
-    <Container>
+    <Container data-test-id={'sorting-select'}>
       <Select
         options={SORTING_STRATEGIES}
         value={selectedValue}
+        placeholder="Sorting"
+        components={{ Option }}
         onChange={(value) => onChange(value)}
       />
     </Container>

@@ -115,14 +115,15 @@ yarn e2e
 
 From my initial exploration on Simply Wall St's website, I found that
 * styled components is used for styles
+* Bootstrap is used for UI
 * server side rendering is used
 * cypress is used for e2e testing
 * PHP is used for the API
 
-I develop locally instead of on codesandbox. I run Chrome browser without CORS.
+I develop locally instead of on codesandbox.
 
 I choose to implement pages for pagination as a SEO consideration.
-If this was a native app task, I will opt with infinite scrolling for better UX.
+If this is a native app task, I will opt with infinite scrolling for better UX.
 
 ### Primary criteria:
 
@@ -139,29 +140,36 @@ If this was a native app task, I will opt with infinite scrolling for better UX.
   * I use theme to apply a consistent tone to the website.
   * I use mixin to abstract reusable logic and to simplify the code.
   * I improve some styles for performance.
+  * I make the page fully responsive.
   * I also used styles from normalize.css for reset some legacy styles and for browser compatibility purposes.
 
 * Rendering performance (Check for performance bottlenecks)
   * I streamline the DOM to speed up rendering.
-  * I add key prop to not affect performance. I use ID instead of index (from the map) wherever possible.
-  * I use Lighthouse for performance debugging.
+  * From my initial exploration on Simply Wall St's website, I found that Bootstrap is customized to be used the UI. I choose not to use Bootstrap because I want to reduce the final bundling size.
   * I write code that is succinct and elegantly get the thing done.
+  * I do not forget to add ```key``` prop where necessary to not affect rendering performance. I use unique ID instead of index (from the map) wherever possible.
   * I try to reduce the number of dependencies to minimise the final bundle size, since this is a small task.
+  * I carefully consider the use of React APIs.
+  * I consider the use of lazy loading, however, since the website uses server side rendering, I will use server side rendering like Next.js to speed up the rendering by pre-rendering.
 
   General performance (other than rendering performance):
+  * I use Lighthouse for performance debugging.
   * I set the page to preconnect to the domain of the API to reduce the time in DNS lookup.
   * I think differential loading can be used to improve performance for production.
   * I think server side rendering, CDN settings can be used to improve performance.
 
 * Avoid overengineering (Simple and straightforward)
-  * Since there is no formal design for this task, so I go with solution that avoids overengineering, simple and straightforward.
-  * I write clean code to make a page that resembles `https://simplywall.st/stocks/`.
+  * I go with solution that avoids overengineering, simple and straightforward.
+  * I do not overthink.
+  * I thought about redux and useReducer for state management. I found that the complex logic lies within my ```useStock``` hook. However, after my careful analysis on the page on the website, I found both the market dropdown, and the pagination use anchor to a new URL to update the data. So I choose not to use redux and useReducer.
+  * I write clean code to make a page that satisfy the requirements and resembles `https://simplywall.st/stocks/`.
 
 ### Bonus criteria:
 * Data structures (How you store internal state)
   * I place careful consideration on which component should own the state.
   * I use the most suitable data type for storing each internal state.
   * I try my best not to directly mutate internal state.
+  * I thought about redux and useReducer for state management. I found that the complex logic lies within my ```useStock``` hook. However, after my careful analysis on the page on the website, I found both the market dropdown, and the pagination use anchor to a new URL to update the data. So I choose not to use redux and useReducer.
 
 * Testing practices (https://codesandbox.io/docs/tests)
   * I set up unit testing, snapshot testing and end-to-end testing.

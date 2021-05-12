@@ -30,7 +30,7 @@ const THEME: object = {
 
   // mixin for font
   font: (
-    fontSize: String = '1rem',
+    fontSize: string = '1rem',
     fontWeight: string = 'normal',
     lineHeight: string = 'normal'
   ): string => `

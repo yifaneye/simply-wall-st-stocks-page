@@ -18,7 +18,9 @@ const Container = styled.div`
 
 const Option: FC = (props: any): JSX.Element => {
   return (
-    <Anchor href={`/${props.value}`}>
+    <Anchor
+      href={`/${props.value}`}
+      data-test-id={`market-option-${props.value}`}>
       <components.Option {...props} children={props.children} />
     </Anchor>
   );
@@ -30,7 +32,7 @@ interface Props {
 
 const MarketDropdown: FC<Props> = ({ selectedValue }): JSX.Element => {
   return (
-    <Container>
+    <Container data-test-id={'market-select'}>
       <Select
         value={MARKETS.filter((market) => market.value === selectedValue)}
         options={MARKETS}

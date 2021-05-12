@@ -3,7 +3,8 @@ export interface ScoreArea {
   name: string;
 }
 
-// separate key and display name to decouple (e.g. DIVIDEND uses income)
+// separate key and display name to decouple
+// (e.g. DIVIDEND on the page uses income from the API response)
 export const SCORE_AREAS: ScoreArea[] = [
   { key: 'value', name: 'VALUE' },
   { key: 'income', name: 'DIVIDEND' },

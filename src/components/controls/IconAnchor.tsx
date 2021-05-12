@@ -19,6 +19,7 @@ interface Props extends PropsWithChildren<any> {
 
 // this component is for placing icon in an Anchor component
 const IconAnchor: FC<Props> = (props): JSX.Element => {
+  // extract icons from props
   const { icon, ...otherProps } = props;
 
   return <Anchor {...otherProps}>{iconNameToComponent[icon]}</Anchor>;

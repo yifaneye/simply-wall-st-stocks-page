@@ -3,10 +3,11 @@ export interface Market {
   label: string;
 }
 
+// set to Australia
 // should actually use geo location of the user based on IP or API, if possible
 export const DEFAULT_MARKET = 'au';
 
-// list of markets extracted from https://simplywall.st/stocks/au
+// list of markets extracted from https://simplywall.st/stocks/au using document.querySelectorAll()
 export const MARKETS: Market[] = [
   { value: 'global', label: 'Global' },
   { value: 'us', label: 'United States' },

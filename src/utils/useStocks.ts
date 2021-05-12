@@ -7,19 +7,20 @@ import { Stock } from '../models/Stock';
 import { URLSearchParams } from './useQuery';
 import { PARAMS } from '../settings/Routing';
 
-interface Response {
-  data: Stock[];
-  meta: any[];
-}
-
+// settings
 const DEFAULT_PAGE_NUMBER = 1;
 const PAGE_SIZE = 24;
 
 type PageNumber = number | null;
 type PageLink = string | null;
 
+interface Data {
+  data: Stock[];
+  meta: any[];
+}
+
 interface AxiosStocksResponse extends AxiosResponse {
-  data: Response;
+  data: Data;
 }
 
 const useStocks = (
@@ -71,6 +72,7 @@ const useStocks = (
       rules: rules,
     };
 
+    // make POST request for data
     return await axios.post(STOCKS_URL, data, {
       headers: {
         'Content-Type': 'application/json',
@@ -82,7 +84,7 @@ const useStocks = (
     setIsLoading(true);
     fetchStocks()
       .then((response: AxiosStocksResponse) => {
-        const { data, meta }: Response = response.data;
+        const { data, meta }: Data = response.data;
         setStocks(data);
         updatePages(meta);
         setIsLoading(false);
@@ -93,7 +95,7 @@ const useStocks = (
         setHasError(true);
         setIsLoading(false);
       });
-    // cannot use .finally() here for browser compatibility
+    // can not use .finally() here, for browser compatibility reasons
 
     return () => {};
   }, [
