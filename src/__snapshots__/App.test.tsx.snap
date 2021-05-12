@@ -6,6 +6,7 @@ exports[`The stock page renders the same as snapshot 1`] = `
 >
   <div
     className="sc-jrsJWt biDlNd"
+    data-test-id="market-select"
   >
     <div
       className=" css-2b097c-container"
@@ -119,6 +120,7 @@ exports[`The stock page renders the same as snapshot 1`] = `
   </div>
   <div
     className="sc-kEqXSa iRqFgG"
+    data-test-id="sorting-select"
   >
     <div
       className=" css-2b097c-container"
