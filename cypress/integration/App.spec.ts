@@ -46,3 +46,17 @@ describe('the sorting dropdown', () => {
     cy.contains('DDH1');
   });
 });
+
+describe('the pagination', () => {
+  it('goes to the correct page', () => {
+    cy.visit('/au?p=2'); // directly go to the second page using URL
+    cy.contains('Insurance Australia Group');
+    cy.contains('Suncorp Group');
+  });
+
+  it('shows correct links to other pages', () => {
+    cy.visit('/au?p=2'); // directly go to the second page using URL
+    cy.get('[data-test-id="pagination"][href="?p=1"]').first().click();
+    cy.url().should('include', '/au?p=1');
+  });
+});

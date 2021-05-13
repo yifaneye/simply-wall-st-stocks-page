@@ -238,6 +238,7 @@ exports[`The stock page renders the same as snapshot 1`] = `
   >
     <a
       className="sc-iCoGMd jcZhbU"
+      data-test-id="pagination"
       disabled={true}
       href={null}
     >
@@ -257,6 +258,7 @@ exports[`The stock page renders the same as snapshot 1`] = `
     </a>
     <a
       className="sc-iCoGMd jcZhbU"
+      data-test-id="pagination"
       disabled={true}
       href={null}
     >

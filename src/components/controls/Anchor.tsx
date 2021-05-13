@@ -39,7 +39,10 @@ interface Props extends PropsWithChildren<any> {
 // this component is for button liked anchors
 const Anchor: FC<Props> = ({ href, disabled, children }): JSX.Element => {
   return (
-    <Container href={href || null} disabled={disabled}>
+    <Container
+      href={href || null}
+      disabled={disabled}
+      data-test-id={'pagination'}>
       {children}
     </Container>
   );
