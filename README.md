@@ -14,6 +14,7 @@ In this exercise we are looking for something that resembles `https://simplywall
 ## The solution will be scored based on the following:
 
 ### Primary criteria:
+[See below for my justifications for primary criteria](#my-justifications-for-primary-criteria)
 
 * Component grouping (How you organise your components into logical groups)
 * Styling architecture (How you implement your styles)
@@ -21,6 +22,7 @@ In this exercise we are looking for something that resembles `https://simplywall
 * Avoid overengineering (Simple and straightforward)
 
 ### Bonus criteria:
+[See below for my justifications for bonus criteria](#my-justifications-for-bonus-criteria)
 
 * Data structures (How you store internal state)
 * Testing practices (https://codesandbox.io/docs/tests)
@@ -85,7 +87,7 @@ If we wanted to fetch 12 of companies in Canada sorted by Market Cap the payload
 
 ## Demo
 
-[http://stocks.yifanai.com.s3-website-ap-southeast-2.amazonaws.com](http://stocks.yifanai.com.s3-website-ap-southeast-2.amazonaws.com)
+[https://stocks.yifanai.com](https://stocks.yifanai.com)
 
 ## Get Started
 
@@ -111,77 +113,79 @@ run end-to-end testing
 yarn e2e
 ```
 
+# Deployment
+build for deployment
+```shell
+yarn build
+```
+
 ## My thoughts
 
+### Initial exploration
 From my initial exploration on Simply Wall St's website, I found that
-* styled components is used for styles
-* Bootstrap is used for UI
-* server side rendering is used
+* styled-components is used for styles
+* server-side rendering is used
 * Cypress is used for e2e testing
 * PHP is used for the API
 
-I develop locally instead of on codesandbox.
+### Development
+I developed locally on my IDE instead of on CodeSandbox.
 
-I choose to implement pages for pagination as a SEO consideration.
-If this is a native app task, I will opt with infinite scrolling for better UX.
-
-### Primary criteria:
+### My justifications for primary criteria
 
 * Component grouping (How you organise your components into logical groups)
-  * I separate icons components and pages components from other components by placing them into their respective directories.
-  * I group components to make them small and manageable to avoid version control conflicts and increase re-usability.
-  * I place careful consideration on which component should own the state.
-  * I extract business logic and place them into custom hooks to decouple components from business logic.
-  * I adhere to single responsibility of components.
+  * I separated icons components and pages components from other components by placing them into their respective directories.
+  * I grouped components to make them small and manageable to avoid version control conflicts and increase re-usability.
+  * I placed careful consideration on which component should own the state.
+  * I extracted business logic and place them into custom hooks to decouple components from business logic.
+  * I adhered to the single responsibility of components.
 
 * Styling architecture (How you implement your styles)
-  * From my initial exploration on Simply Wall St's website, I found that styled components is used for styles.
-  * I use styled components for styling.
-  * I use theme to apply a consistent tone to the website.
-  * I use mixin to abstract reusable logic and to simplify the code.
-  * I improve some styles for performance.
-  * I make the page fully responsive.
-  * I also used styles from normalize.css for reset some legacy styles and for browser compatibility purposes.
-  * I thought about the use of libraries (bootstrap, material-ui). Since this task is only one page, so I decide not to use them, since I will need to customize them. Building the simple components not only to demonstrate my skills, but also reduce the final bundle size. If I am to build a website with multiple pages and many more components, using library will increase the productivity of the team. For a large website, self-made components will also get larger in the final bundle and they take more time to maintain.
+  * From my initial exploration on Simply Wall St's website, I found that styled-components is used for styles. So, I used styled-components for styling.
+  * I used a theme to apply a consistent tone to the website.
+  * I wrote mixins (my love in Sass) to abstract reusable logic and to simplify the code for styling.
+  * I also used styles from normalize.css to reset some legacy styles and for browser compatibility purposes.
+  * I thought about the use of libraries (Bootstrap, Material-UI). Since this task is only one page, so I decide not to use them, since I will need to customize them for 1 place of usage. Building the simple components not only demonstrates my skills but also reduces the final bundle size. If I am to build a website with multiple pages and many more components, using a UI library will increase the productivity of the team. For a large website, self-made components will also get larger in the final bundle and they take more time to maintain.
 
 * Rendering performance (Check for performance bottlenecks)
-  * I streamline the DOM to speed up rendering.
-  * From my initial exploration on Simply Wall St's website, I found that Bootstrap is customized to be used the UI. I choose not to use Bootstrap because I want to reduce the final bundling size. (I know that during the build time, there are ways to only bundle the styles and components in use.)
-  * I write code that is succinct and elegantly get the thing done.
-  * I do not forget to add ```key``` prop where necessary to not affect rendering performance. I use unique ID instead of index (from the map) wherever possible.
-  * I try to reduce the number of dependencies to minimise the final bundle size, since this is a small task.
-  * I carefully consider the use of React APIs.
-  * I consider the use of lazy loading, however, since the website uses server side rendering, I will use server side rendering like Next.js to speed up the rendering by pre-rendering.
+  * I streamlined the DOM to speed up rendering. I write code that is succinct and elegantly get the thing done. I improved some styles for performance.
+  * I tried to reduce the number of dependencies to minimise the final bundle size since this is a small task. I chose not to use Bootstrap, Material-UI because I want to reduce the final bundling size. (I know that during the build time, there are ways to only bundle the styles and components in use.)
+  * I did not forget to add ```key``` prop where necessary to not affect rendering performance. I use a unique ID instead of an index (from the map) wherever possible.
+  * I carefully considered the use of React APIs for rendering performance.
+  * I considered the use of lazy loading, however, I found Simply Wall St's website uses server-side rendering. I will use server-side rendering like Next.js to speed up the rendering by pre-rendering.
 
   General performance (other than rendering performance):
-  * I use Lighthouse for performance debugging.
+  * I used Lighthouse for performance debugging.
   * I set the page to preconnect to the domain of the API to reduce the time in DNS lookup.
   * I think differential loading can be used to improve performance for production.
-  * I think server side rendering, CDN settings can be used to improve performance.
+  * I think server-side rendering, CDN settings can be used to improve performance.
 
 * Avoid overengineering (Simple and straightforward)
-  * I go with solution that avoids overengineering, simple and straightforward.
-  * I do not overthink.
-  * I thought about Redux, the context API and useReducer for state management. I found that the business logic lies within my ```useStocks``` hook. However, after my careful analysis on the page on the Simply Wall St's website, I found both the market dropdown, and the pagination use anchor (```<a>``` tag) to a new URL for updating the data. So I choose not to use Redux, Context API and useReducer.
-  * I write clean code to make a page that satisfy the requirements and resembles `https://simplywall.st/stocks/`.
+  * I went with solutions that avoid overengineering, simple and straightforward. I did not overthink during my analysis and implementation.
+  * I wrote clean code to make a page that satisfies the requirements and resembles `https://simplywall.st/stocks/`.
+  * I thought about Redux, React's Context API and useReducer for state management. I found that the business logic lies within my ```useStocks``` hook. However, after my careful analysis on the page on the Simply Wall St's website, I found both the market dropdown and the pagination use anchor (```<a>``` tag) to a new URL and update the data. So I chose not to use Redux, React's Context API and useReducer.
 
-### Bonus criteria:
+### My justifications for bonus criteria
 * Data structures (How you store internal state)
-  * I place careful consideration on which component should own the state.
-  * I use the most suitable data type for storing each internal state.
-  * I try my best not to directly mutate internal state.
-  * I thought about redux and useReducer for state management. I found that the complex logic lies within my ```useStock``` hook. However, after my careful analysis on the page on the website, I found both the market dropdown, and the pagination use anchor to a new URL to update the data. So I choose not to use redux and useReducer.
+  * I used the most suitable data type for storing each internal state.
+  * I placed careful consideration on which component should own the state. I tried my best not to directly mutate the internal state.
+  * I thought about redux and useReducer for state management. I found that the complex logic lies within my ```useStock``` hook. However, after my careful analysis of the page on the website, I found both the market dropdown and the pagination use anchor to a new URL to update the data. So I choose not to use redux and useReducer.
 
 * Testing practices (https://codesandbox.io/docs/tests)
-  * I set up unit testing, snapshot testing and end-to-end testing.
-  * I wrote simple tests for each of unit testing, snapshot testing and end-to-end testing.
-  * I use jest for unit testing and snapshot testing.
-  * From my initial exploration on Simply Wall St's website, I found that Cypress is used for end-to-end testing.
-  * I use Cypress for end-to-end testing.
+  * I set up unit testing, snapshot testing and end-to-end testing. I wrote simple tests for each unit testing, snapshot testing and end-to-end testing.
+  * I used jest for unit testing and snapshot testing.
+  * From my initial exploration on Simply Wall St's website, I found that Cypress is used for end-to-end testing. So, I used Cypress for end-to-end testing.
 
-### Others:
-  * I use TypeScript to provide types for JavaScript to catch errors and fix them before runtime.
-  * I use functional components to make the code cleaner and easier to read.
-  * I build my work and put it live at [http://stocks.yifanai.com.s3-website-ap-southeast-2.amazonaws.com](http://stocks.yifanai.com.s3-website-ap-southeast-2.amazonaws.com).
-  * I use cypress-webpack-preprocessor-v5 5.0.0-alpha.1 since there is a known issue with Cypress with webpack 5. This package is recommended by the Cypress team on their github issues page. This package only has this version available.
+### Other highlights
+* I chose to implement pages for pagination as an SEO consideration. If this is a native app task, I will opt with infinite scrolling for better UX.
+* I used TypeScript throughout to provide types for JavaScript to catch errors and fix them before runtime.
+* I used functional components to make the code cleaner and easier to read.
+* I used prettier to format my code to adhere to a standard of code style.
+* I added different colours to vividly indicate the total score of analysis.
+* I made the page fully responsive. It looks consistent and nice even on iPhone 5/5s.
+* I built my work and put it live at [https://stocks.yifanai.com](https://stocks.yifanai.com) on AWS using S3, CloudFront and Route53.
+* I blocked search indexing with 'noindex' on my deployment, since my page may be considered as duplicate of `https://simplywall.st/stock`. So the search index of `https://simplywall.st/stock` will not be affected by my deployment.
 
+### Notes:
+* During my development, the aforementioned "refer to `https://simplywall.st/stock` for supported country list" is not available. So I used document.querySelectorAll() to put together the list of available countries.
+* I used cypress-webpack-preprocessor-v5 5.0.0-alpha.1 since there is a known issue with Cypress with webpack 5. This package is recommended by the Cypress team on their GitHub issues page. This package only has this version available at the time for writing.
