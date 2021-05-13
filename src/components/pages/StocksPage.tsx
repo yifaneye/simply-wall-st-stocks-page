@@ -20,10 +20,12 @@ const Container = styled.div`
   max-width: ${({ theme }) => theme.breakpoints.maxWidth};
 `;
 
-const Page: FC = (): JSX.Element => {
-  const { market: marketValue } = useParams();
+const StocksPage: FC = (): JSX.Element => {
+  const { market: marketValue } = useParams<{}>();
   const query = useQuery();
-  const [sorting, setSorting] = useState(DEFAULT_SORTING_STRATEGY);
+  const [sorting, setSorting] = useState<SortingStrategy>(
+    DEFAULT_SORTING_STRATEGY
+  );
   const [stocks, isLoading, hasError, prevPageLink, nextPageLink] = useStocks(
     marketValue,
     sorting.value,
@@ -34,7 +36,7 @@ const Page: FC = (): JSX.Element => {
     setSorting(value);
   };
 
-  // need to use shim or set a height to minimize layout shift
+  // need to use shim(s) or set a suitable height to minimize layout shift, in the future
   return (
     <Container>
       <MarketDropdown selectedValue={marketValue} />
@@ -46,4 +48,4 @@ const Page: FC = (): JSX.Element => {
   );
 };
 
-export default Page;
+export default StocksPage;

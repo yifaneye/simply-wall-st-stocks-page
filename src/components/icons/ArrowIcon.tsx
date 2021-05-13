@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
 // this arrow icon points left
+// the generic for prop type here is set to 'any' to allow customization on the icon component
 const ArrowIcon: FC<any> = (props): JSX.Element => (
   <svg
     fill="#fff"

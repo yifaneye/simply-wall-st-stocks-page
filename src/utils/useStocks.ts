@@ -1,6 +1,7 @@
-import axios, { AxiosError, AxiosResponse } from 'axios';
 import { useCallback, useEffect, useState } from 'react';
-import { STOCKS_URL } from '../environments/endpoints';
+import axios, { AxiosError, AxiosResponse } from 'axios';
+
+import environment from '../environments/environment';
 import { DEFAULT_MARKET } from '../models/Markets';
 import { DEFAULT_SORTING_STRATEGY } from '../models/SortingStrategies';
 import { Stock } from '../models/Stock';
@@ -73,7 +74,7 @@ const useStocks = (
     };
 
     // make POST request for data
-    return await axios.post(STOCKS_URL, data, {
+    return await axios.post(environment.STOCKS_URL, data, {
       headers: {
         'Content-Type': 'application/json',
       },
