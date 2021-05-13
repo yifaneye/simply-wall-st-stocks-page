@@ -117,7 +117,7 @@ From my initial exploration on Simply Wall St's website, I found that
 * styled components is used for styles
 * Bootstrap is used for UI
 * server side rendering is used
-* cypress is used for e2e testing
+* Cypress is used for e2e testing
 * PHP is used for the API
 
 I develop locally instead of on codesandbox.
@@ -136,16 +136,17 @@ If this is a native app task, I will opt with infinite scrolling for better UX.
 
 * Styling architecture (How you implement your styles)
   * From my initial exploration on Simply Wall St's website, I found that styled components is used for styles.
-  * I used styled components for styling.
+  * I use styled components for styling.
   * I use theme to apply a consistent tone to the website.
   * I use mixin to abstract reusable logic and to simplify the code.
   * I improve some styles for performance.
   * I make the page fully responsive.
   * I also used styles from normalize.css for reset some legacy styles and for browser compatibility purposes.
+  * I thought about the use of libraries (bootstrap, material-ui). Since this task is only one page, so I decide not to use them, since I will need to customize them. Building the simple components not only to demonstrate my skills, but also reduce the final bundle size. If I am to build a website with multiple pages and many more components, using library will increase the productivity of the team. For a large website, self-made components will also get larger in the final bundle and they take more time to maintain.
 
 * Rendering performance (Check for performance bottlenecks)
   * I streamline the DOM to speed up rendering.
-  * From my initial exploration on Simply Wall St's website, I found that Bootstrap is customized to be used the UI. I choose not to use Bootstrap because I want to reduce the final bundling size.
+  * From my initial exploration on Simply Wall St's website, I found that Bootstrap is customized to be used the UI. I choose not to use Bootstrap because I want to reduce the final bundling size. (I know that during the build time, there are ways to only bundle the styles and components in use.)
   * I write code that is succinct and elegantly get the thing done.
   * I do not forget to add ```key``` prop where necessary to not affect rendering performance. I use unique ID instead of index (from the map) wherever possible.
   * I try to reduce the number of dependencies to minimise the final bundle size, since this is a small task.
@@ -161,7 +162,7 @@ If this is a native app task, I will opt with infinite scrolling for better UX.
 * Avoid overengineering (Simple and straightforward)
   * I go with solution that avoids overengineering, simple and straightforward.
   * I do not overthink.
-  * I thought about redux and useReducer for state management. I found that the complex logic lies within my ```useStock``` hook. However, after my careful analysis on the page on the website, I found both the market dropdown, and the pagination use anchor to a new URL to update the data. So I choose not to use redux and useReducer.
+  * I thought about Redux, the context API and useReducer for state management. I found that the business logic lies within my ```useStocks``` hook. However, after my careful analysis on the page on the Simply Wall St's website, I found both the market dropdown, and the pagination use anchor (```<a>``` tag) to a new URL for updating the data. So I choose not to use Redux, Context API and useReducer.
   * I write clean code to make a page that satisfy the requirements and resembles `https://simplywall.st/stocks/`.
 
 ### Bonus criteria:
@@ -175,6 +176,12 @@ If this is a native app task, I will opt with infinite scrolling for better UX.
   * I set up unit testing, snapshot testing and end-to-end testing.
   * I wrote simple tests for each of unit testing, snapshot testing and end-to-end testing.
   * I use jest for unit testing and snapshot testing.
-  * From my initial exploration on Simply Wall St's website, I found that cypress is used for end-to-end testing.
-  * I use cypress for end-to-end testing.
+  * From my initial exploration on Simply Wall St's website, I found that Cypress is used for end-to-end testing.
+  * I use Cypress for end-to-end testing.
+
+### Others:
+  * I use TypeScript to provide types for JavaScript to catch errors and fix them before runtime.
+  * I use functional components to make the code cleaner and easier to read.
+  * I build my work and put it live at [http://stocks.yifanai.com.s3-website-ap-southeast-2.amazonaws.com](http://stocks.yifanai.com.s3-website-ap-southeast-2.amazonaws.com).
+  * I use cypress-webpack-preprocessor-v5 5.0.0-alpha.1 since there is a known issue with Cypress with webpack 5. This package is recommended by the Cypress team on their github issues page. This package only has this version available.
 
