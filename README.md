@@ -85,13 +85,14 @@ If we wanted to fetch 12 of companies in Canada sorted by Market Cap the payload
 }
 ```
 
-## Demo
+## Live Demo
 
 [https://stocks.yifanai.com](https://stocks.yifanai.com)
 
 ## Get Started
 
 ### Development
+
 install dependencies
 ```shell
 yarn install
@@ -102,7 +103,8 @@ run the development server
 yarn start
 ```
 
-## Testing
+### Testing
+
 run unit testing and snapshot testing
 ```shell
 yarn test
@@ -113,7 +115,8 @@ run end-to-end testing
 yarn e2e
 ```
 
-# Deployment
+### Deployment
+
 build for deployment
 ```shell
 yarn build
@@ -144,14 +147,14 @@ I developed locally on my IDE instead of on CodeSandbox.
   * From my initial exploration on Simply Wall St's website, I found that styled-components is used for styles. So, I used styled-components for styling.
   * I used a theme to apply a consistent tone to the website.
   * I wrote mixins (my love in Sass) to abstract reusable logic and to simplify the code for styling.
-  * I also used styles from normalize.css to reset some legacy styles and for browser compatibility purposes.
-  * I thought about the use of libraries (Bootstrap, Material-UI). Since this task is only one page, so I decide not to use them, since I will need to customize them for 1 place of usage. Building the simple components not only demonstrates my skills but also reduces the final bundle size. If I am to build a website with multiple pages and many more components, using a UI library will increase the productivity of the team. For a large website, self-made components will also get larger in the final bundle and they take more time to maintain.
+  * I also imported normalize.css to reset legacy styles for browser compatibility purposes.
+  * I thought about the use of libraries (Bootstrap, Material-UI). Since this task is only one page, so I decide not to use them, since I will need to customize them for 1 place of usage. Building the simple components not only demonstrates my skills but also reduces the final bundle size. (I know that during the build time, there are ways to only bundle the styles and components in use e.g. tree shaking). If I am to build a website with multiple pages and many more components, using a UI library will increase the productivity of the team. For a large website, self-made components will also get larger in the final bundle and they take more time to maintain.
 
 * Rendering performance (Check for performance bottlenecks)
   * I streamlined the DOM to speed up rendering. I write code that is succinct and elegantly get the thing done. I improved some styles for performance.
-  * I tried to reduce the number of dependencies to minimise the final bundle size since this is a small task. I chose not to use Bootstrap, Material-UI because I want to reduce the final bundling size. (I know that during the build time, there are ways to only bundle the styles and components in use.)
   * I did not forget to add ```key``` prop where necessary to not affect rendering performance. I use a unique ID instead of an index (from the map) wherever possible.
   * I carefully considered the use of React APIs for rendering performance.
+  * I tried to reduce the number of dependencies to minimise the final bundle size since this is a small task. I chose not to use Bootstrap, Material-UI because I want to reduce the final bundling size. (I know that during the build time, there are ways to only bundle the styles and components in use e.g. tree shaking).
   * I considered the use of lazy loading, however, I found Simply Wall St's website uses server-side rendering. I will use server-side rendering like Next.js to speed up the rendering by pre-rendering.
 
   General performance (other than rendering performance):
@@ -169,7 +172,7 @@ I developed locally on my IDE instead of on CodeSandbox.
 * Data structures (How you store internal state)
   * I used the most suitable data type for storing each internal state.
   * I placed careful consideration on which component should own the state. I tried my best not to directly mutate the internal state.
-  * I thought about redux and useReducer for state management. I found that the complex logic lies within my ```useStock``` hook. However, after my careful analysis of the page on the website, I found both the market dropdown and the pagination use anchor to a new URL to update the data. So I choose not to use redux and useReducer.
+  * I thought about redux and useReducer for state management. I found that the complex logic lies within my ```useStocks``` hook. However, after my careful analysis of the page on the website, I found both the market dropdown and the pagination use anchor to a new URL to update the data. So I choose not to use redux and useReducer.
 
 * Testing practices (https://codesandbox.io/docs/tests)
   * I set up unit testing, snapshot testing and end-to-end testing. I wrote simple tests for each unit testing, snapshot testing and end-to-end testing.
@@ -180,12 +183,16 @@ I developed locally on my IDE instead of on CodeSandbox.
 * I chose to implement pages for pagination as an SEO consideration. If this is a native app task, I will opt with infinite scrolling for better UX.
 * I used TypeScript throughout to provide types for JavaScript to catch errors and fix them before runtime.
 * I used functional components to make the code cleaner and easier to read.
-* I used prettier to format my code to adhere to a standard of code style.
+* I used prettier to format my code to adhere to the predefined standard of code style.
 * I added different colours to vividly indicate the total score of analysis.
-* I made the page fully responsive. It looks consistent and nice even on iPhone 5/5s.
+* I made the page fully responsive. I set to truncate text that are too long to show with ellipses at the end. It looks consistent and nice even on iPhone 5/5s.
 * I built my work and put it live at [https://stocks.yifanai.com](https://stocks.yifanai.com) on AWS using S3, CloudFront and Route53.
 * I blocked search indexing with 'noindex' on my deployment, since my page may be considered as duplicate of `https://simplywall.st/stock`. So the search index of `https://simplywall.st/stock` will not be affected by my deployment.
 
 ### Notes:
-* During my development, the aforementioned "refer to `https://simplywall.st/stock` for supported country list" is not available. So I used document.querySelectorAll() to put together the list of available countries.
+* During my development, the aforementioned "refer to `https://simplywall.st/stock` for supported country list" is not available. So I used ```Document.querySelectorAll()``` to put together the list of available countries.
 * I used cypress-webpack-preprocessor-v5 5.0.0-alpha.1 since there is a known issue with Cypress with webpack 5. This package is recommended by the Cypress team on their GitHub issues page. This package only has this version available at the time for writing.
+
+## Live Demo
+
+[https://stocks.yifanai.com](https://stocks.yifanai.com)
